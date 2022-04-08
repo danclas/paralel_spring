@@ -2,14 +2,12 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "./linear_filter_horizontal.h"
+#include <iostream>
 
-TEST(Sequential, Test_Sum_10) {
-    const int count = 10;
-    int sum = 0;
-    for (size_t i = 0; i < count; i++) {
-        sum++;
-    }
-    ASSERT_EQ(count, sum);
+TEST(TestForFunctions, TestGetGaussKernel) {
+    std::vector<float> res = getGaussKernel(1, 1.5);
+
+    ASSERT_NEAR(res[4], 0.147761, 0.001);
 }
 
 TEST(Sequential, Test_Sum_20) {
