@@ -22,3 +22,29 @@ std::vector<float> getGaussKernel(int radius, float sigma) {
   return res;
 }
 
+float calcNewPixColor(const int x, const int y, const int width,
+                      const int height, const std::vector<float>& kernel,
+                      int radius, const std::vector<float>& img) {
+  float color = 0;
+
+  for (int i = -radius; i <= radius; i++)
+    for (int j = -radius; j <= radius; j++) {
+      int k = (i + radius) * (2 * radius + 1) + j + radius;
+
+      // check not in border
+      if (x + j >= 0 && x + j < width && y + i >= 0 && y + i < height) {
+        int x_coord = x + j;
+        int y_coord = y + i; 
+        int m = (y + i) * width + x + j;
+        color += img[m] * kernel[k];
+      }
+
+      // check color
+    }
+
+  if (color > 255) {
+    color = 255;
+  }
+  return color;
+};
+
