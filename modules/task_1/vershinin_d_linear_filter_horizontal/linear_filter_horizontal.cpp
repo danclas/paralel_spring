@@ -33,8 +33,6 @@ float calcNewPixColor(const int x, const int y, const int width,
 
       // check not in border
       if (x + j >= 0 && x + j < width && y + i >= 0 && y + i < height) {
-        int x_coord = x + j;
-        int y_coord = y + i; 
         int m = (y + i) * width + x + j;
         color += img[m] * kernel[k];
       }
@@ -46,5 +44,5 @@ float calcNewPixColor(const int x, const int y, const int width,
     color = 255;
   }
   return color;
-};
+}
 
