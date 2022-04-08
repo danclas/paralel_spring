@@ -11,7 +11,7 @@ std::vector<float> getGaussKernel(int radius, float sigma) {
     for (int y = -radius; y <= radius; y++) {
       int k = (x + radius) * size + (y + radius);
       res[k] = 1 / (2 * M_PI * sigma * sigma) *
-               std::expf(-(x * x + y * y) / (2 * sigma * sigma));
+               std::exp(-(x * x + y * y) / (2 * sigma * sigma));
       norm += res[k];
     }
 
