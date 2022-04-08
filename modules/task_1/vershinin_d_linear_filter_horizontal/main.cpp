@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "./linear_filter_horizontal.h"
-#include <iostream>
 
 TEST(TestForFunctions, TestGetGaussKernel) {
     std::vector<float> res = getGaussKernel(1, 1.5);
@@ -43,30 +42,15 @@ TEST(TestForFunctions, TestCalcNewPixColor_width_height) {
   ASSERT_NEAR(color, 95.1219, 0.001);
 }
 
+TEST(TestForFunctions, TestGetSequentialOperations) {
+  std::vector<float> kernel = getGaussKernel(1, 1.5);
+  std::vector<float> img{0, 128, 255, 0, 128, 255, 0, 128, 255};
 
-TEST(Sequential, Test_Sum_50) {
-    const int count = 20;
-    int sum = 0;
-    for (size_t i = 0; i < count; i++) {
-        sum++;
-    }
-    ASSERT_EQ(count, sum);
-}
+  std::vector<float> res = getSequentialOperations(3, 3, kernel, img);
+  std::vector<float> res_check{27.2716, 88.3884, 95.1219, 39.3986, 127.692,
+                               137.42,  27.2716, 88.3884, 95.1219};
 
-TEST(Sequential, Test_Sum_70) {
-    const int count = 20;
-    int sum = 0;
-    for (size_t i = 0; i < count; i++) {
-        sum++;
-    }
-    ASSERT_EQ(count, sum);
-}
-
-TEST(Sequential, Test_Sum_100) {
-    const int count = 100;
-    int sum = 0;
-    for (size_t i = 0; i < count; i++) {
-        sum++;
-    }
-    ASSERT_EQ(count, sum);
+  for (int i = 0; i < 9; i++) {
+    ASSERT_NEAR(res[i], res_check[i], 0.001);
+  }
 }

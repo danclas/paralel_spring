@@ -46,3 +46,17 @@ float calcNewPixColor(const int x, const int y, const int width,
   return color;
 }
 
+std::vector<float> getSequentialOperations(const int width, const int height,
+                                           const std::vector<float>& kernel,
+                                           const std::vector<float>& img) {
+  std::vector<float> res(width * height);
+  for (int y = 0; y < height; y++)
+    for (int x = 0; x < width; x++) {
+      int m = y * width + x;
+      float color = calcNewPixColor(x, y, width, height, kernel, 1, img);
+      res[m] = color;
+    }
+
+  return res;
+}
+
