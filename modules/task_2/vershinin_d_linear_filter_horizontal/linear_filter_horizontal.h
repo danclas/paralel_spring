@@ -2,7 +2,14 @@
 #ifndef MODULES_TASK_2_VERSHININ_D_LINEAR_FILTER_HORIZONTAL_LINEAR_FILTER_HORIZONTAL_H_
 #define MODULES_TASK_2_VERSHININ_D_LINEAR_FILTER_HORIZONTAL_LINEAR_FILTER_HORIZONTAL_H_
 #include <vector>
-#include "../../../modules/task_1/vershinin_d_linear_filter_horizontal/linear_filter_horizontal.h"  // seq
+
+std::vector<float> getGaussKernel(int radius, float sigma);
+float calcNewPixColor(const int x, const int y, const int width,
+                      const int height, const std::vector<float>& kernel,
+                      int radius, const std::vector<float>& img);
+std::vector<float> getSequentialOperations(const int width, const int height,
+                                           const std::vector<float>& kernel,
+                                           const std::vector<float>& img);
 
 std::vector<float> getParallelOperations(const int width, const int height,
                                          const std::vector<float>& kernel,
