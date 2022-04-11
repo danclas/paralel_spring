@@ -5,12 +5,10 @@
 
 #include <iostream>
 #include <vector>
-
-// #include "../../../modules/task_1/
-// vershinin_d_linear_filter_horizontal/linear_filter_horizontal.h"  // seq
+#include "../../../modules/task_1/vershinin_d_linear_filter_horizontal/linear_filter_horizontal.cpp"  // seq
 #include "./linear_filter_horizontal.h"
 
-TEST(OMP_TEST, TestGetParallelOperations_own_img_3x3) {
+TEST(OMP_TEST, TestGetParallelOperations_3x3) {
   std::vector<float> kernel = getGaussKernel(1, 1.5);
   int width = 3;
   int height = 3;
