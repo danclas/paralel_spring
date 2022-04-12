@@ -19,7 +19,7 @@ TEST(OMP_TEST, TestGetParallelOperations_3x3) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -35,7 +35,7 @@ TEST(OMP_TEST, TestGetParallelOperations_128x128) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -51,7 +51,7 @@ TEST(OMP_TEST, TestGetParallelOperations_256x256) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -67,7 +67,7 @@ TEST(OMP_TEST, DISABLED_TestGetParallelOperations_512x512) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -83,7 +83,7 @@ TEST(OMP_TEST, DISABLED_TestGetParallelOperations_1024x1024) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -99,7 +99,7 @@ TEST(OMP_TEST, DISABLED_TestGetParallelOperations_1920x1080) {
 
   std::vector<float> res = getSequentialOperations(width, height, kernel, img);
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -107,7 +107,7 @@ TEST(OMP_TEST, DISABLED_TestGetParallelOperations_1920x1080) {
 // Test with time
 
 /*
-TEST(OMP_TEST, TestGetParallelOperations_own_img_3x3) {
+TEST(OMP_TEST, TestGetParallelOperations_3x3) {
   std::vector<float> kernel = getGaussKernel(1, 1.5);
   int width = 3;
   int height = 3;
@@ -127,7 +127,7 @@ TEST(OMP_TEST, TestGetParallelOperations_own_img_3x3) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -152,7 +152,7 @@ TEST(OMP_TEST, TestGetParallelOperations_128x128) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -177,7 +177,7 @@ TEST(OMP_TEST, TestGetParallelOperations_256x256) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -202,7 +202,7 @@ TEST(OMP_TEST, TestGetParallelOperations_512x512) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -227,7 +227,7 @@ TEST(OMP_TEST, TestGetParallelOperations_1024x1024) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
@@ -252,11 +252,12 @@ TEST(OMP_TEST, TestGetParallelOperations_1920x1080) {
   std::cout << "paralel (t1): " << t1 << " seq (t2): " << t2
             << " t2/t1 :" << t2 / t1 << std::endl;
 
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < width * height; i++) {
     ASSERT_NEAR(res[i], res_check[i], 0.001);
   }
 }
 */
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
